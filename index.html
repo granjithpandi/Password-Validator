@@ -1,0 +1,105 @@
+<!--
+    Author Details
+	==============
+	Author: Ranjith Pandi
+
+	Author URL: http://ranjithpandi.com
+
+	Attribution is must on every page, where this work is used.
+
+	For Attribution removal request. please consider contacting us through http://ranjithpandi.com/#contact
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Password Validator And Strength</title>
+<style>
+h2{
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.fields{
+	padding: 10px;
+}
+
+label{
+	text-transform: uppercase;
+	margin-right: 10px;
+}
+
+input{
+	display: inline-block;
+	width: 30%;
+	height: 20px;
+	font-size: 14px;
+	line-height: 20px;
+	vertical-align: middle;
+	padding: 5px;
+	margin: 5px 0px;
+	background-color: #FFF;
+	color: #555;
+	border: 1px solid #CCC;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border linear .2s,box-shadow linear .2s;
+	   -moz-transition: border linear .2s,box-shadow linear .2s;
+	     -o-transition: border linear .2s,box-shadow linear .2s;
+			transition: border linear .2s,box-shadow linear .2s;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+			border-radius: 4px;
+}
+
+.pass-container{
+	width: 487px;
+	margin: 10px 5px;
+}
+
+.pass-bar{
+	height: 15px;
+	margin: 10px 2px;
+}
+
+</style>
+</head>
+<body>
+<header>
+	<h2>Strong Password Generator</h2>
+</header>
+<div class="fields">
+	<label>UserName </label>
+	<input type="text" name="name" id="username" value="">
+</div>
+<div class="fields">
+	<label>Password </label>
+	<input type="password" name="pass" id="pass" value="">
+</div>
+<div class="pass-container">
+	<div class="pass-bar"></div>
+	<div class="pass-hint"></div>
+</div>
+<script type="text/javascript" src="javascript/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="javascript/zxcvbn.js"></script>
+<script type="text/javascript" src="javascript/passwordvalidationstrength.js"></script>
+<script>
+$("#pass").on('keyup', function(){
+	$(this).PasswordStrength({
+		minChars : 5,
+		maxChars : 6,
+		similarToUsername: true,
+		userName: $('#username'),
+		lowerCase: true,
+		upperCase: true,
+		hasNumber: true,
+		specialChars: '!,@,#,$,%,\^,&,*,?,_,~',
+		hasSpecialChar: true,
+		passwordmeter: $('.pass-bar'),
+		info: $('.pass-hint')
+	});
+});
+</script>
+</body>
+</html>
